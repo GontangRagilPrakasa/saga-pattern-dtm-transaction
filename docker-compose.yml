@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  dtm:
+    image: yedf/dtm
+    ports:
+      - "36789:36789"
+    environment:
+      - TZ=Asia/Jakarta
+      - DTM_DB_DRIVER=mysql
+      - DTM_DB_HOST=10.20.0.236
+      - DTM_DB_PORT=3306
+      - DTM_DB_USER=root
+      - DTM_DB_PASSWORD=root
+      - DTM_DB_NAME=dtm
+    depends_on:
+      - mysql
+    networks:
+      - dtmnet
+
+  service-a:
+    build: ./service-a
+    ports:
+      - "8081:8081"
+    networks:
+      - dtmnet
+
+  service-b:
+    build: ./service-b
+    ports:
+      - "8082:8082"
+    networks:
+      - dtmnet
+
+networks:
+  dtmnet:

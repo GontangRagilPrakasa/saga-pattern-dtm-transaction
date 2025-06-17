@@ -1,0 +1,22 @@
+# Build files
+*.exe
+*.test
+*.out
+
+# Output directories
+/bin/
+build/
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Testing
+*.cover
+
+# Env
+.env
